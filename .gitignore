@@ -130,6 +130,9 @@ ENV/
 env.bak/
 venv.bak/
 
+# notes
+command.md
+
 # Spyder project settings
 .spyderproject
 .spyproject
