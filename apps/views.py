@@ -15,15 +15,8 @@ class ImageCreateAPIView(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = ImageSerializers(data=request.data)
         if serializer.is_valid():
-            images = []
-            for image_data in request.FILES.getlist('image'):
-                serializer = ImageSerializers(data={'image': image_data})
-                if serializer.is_valid():
-                    serializer.save()
-                    images.append(serializer.data)
-                else:
-                    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-            return Response({"images": images}, status=status.HTTP_201_CREATED)
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
