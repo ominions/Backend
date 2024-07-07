@@ -7,10 +7,11 @@ from rest_framework import status
 from .models import ImageModel
 from .serializers import ImageSerializers
 
+
 class ImageCreateAPIView(viewsets.ModelViewSet):
     queryset = ImageModel.objects.all()
     serializer_class = ImageSerializers
-    http_method_names = ["get","post","options"]
+    http_method_names = ["get", "post", "options"]
 
     def create(self, request, *args, **kwargs):
         serializer = ImageSerializers(data=request.data)

@@ -1,7 +1,8 @@
 from django.db import models
 
+
 class ImageModel(models.Model):
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to="images/")
     image_url = models.URLField(blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 

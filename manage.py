@@ -5,6 +5,7 @@ import sys
 
 from core.settings.base import DEBUG
 
+
 def main():
     """Run administrative tasks."""
     if DEBUG:
