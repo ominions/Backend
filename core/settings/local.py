@@ -10,7 +10,3 @@ DATABASES = {
         "PORT": os.environ.get("DB_PORT"),
     }
 }
-
-ALLOWED_HOSTS = [
-    'dev.giriamrit.com.np'
-    ]
