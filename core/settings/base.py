@@ -36,7 +36,7 @@ INSTALLED_APPS = DEFAULT_APP + LOCAL_APPS + THIRD_PARTY_APPS
 
 CSRF_TRUSTED_ORIGINS = [
     "https://web-production-22dca.up.railway.app",
-    "https://dev.giriamrit.com.np",
+    "https://dev.giriamrit.com.np"
     ]
 
 
