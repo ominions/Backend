@@ -34,6 +34,9 @@ THIRD_PARTY_APPS = [
 INSTALLED_APPS = DEFAULT_APP + LOCAL_APPS + THIRD_PARTY_APPS
 
 
+CSRF_TRUSTED_ORIGINS = ["https://web-production-22dca.up.railway.app","https://dev.giriamrit.com.np"]
+
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -80,6 +83,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ALLOW_ALL_ORIGIN = True
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
 
 LANGUAGE_CODE = "en-us"
 
@@ -92,8 +101,14 @@ USE_TZ = True
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
+STORAGE = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    },
+}
 
-STATIC_URL = "static/"
-
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_build", "staticfiles")
+STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
