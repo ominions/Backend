@@ -13,5 +13,5 @@ DATABASES = {
 
 ALLOWED_HOSTS = [
     "backend-production-04a9.up.railway.app",
-    "dev.giriamrit.com.np",
+    "https://dev.giriamrit.com.np",
     ]
