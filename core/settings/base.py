@@ -41,7 +41,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 ALLOWED_HOSTS = [
-    'dev.giriamrit.com.np'
+    'dev.giriamrit.com.np',
+    '127.0.0.1',
 ]
 
 
