@@ -371,6 +371,7 @@ psycopg==3.1.19
 psycopg-binary==3.1.19
 psycopg2==2.9.9
 psycopg2-binary==2.9.9
+<<<<<<< HEAD
 ptyprocess==0.7.0
 publicsuffix2==2.20191221
 publicsuffixlist==0.9.3
@@ -779,3 +780,7 @@ zope.deprecation==5.0
 zope.event==5.0
 zope.interface==6.1
 zstandard==0.22.0
+=======
+pillow==10.3.0
+
+>>>>>>> 6c19254 (Modified Allowed host)

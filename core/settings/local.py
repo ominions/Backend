@@ -10,3 +10,5 @@ DATABASES = {
         "PORT": os.environ.get("DB_PORT"),
     }
 }
+
+ALLOWED_HOSTS = ["backend-production-04a9.up.railway.app"]
