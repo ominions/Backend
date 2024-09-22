@@ -12,5 +12,5 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = [
-    "dev.giriamrit.com.np"
+    'dev.giriamrit.com.np'
     ]
