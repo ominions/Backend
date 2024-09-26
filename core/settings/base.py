@@ -92,13 +92,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CORS_ALLOW_ALL_ORIGIN = True
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:5173",
-    "http://localhost:5173",
-]
+# CORS_ALLOW_ALL_ORIGIN = True
+# CORS_ORIGIN_WHITELIST = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000",
+#     "http://127.0.0.1:5173",
+#     "http://localhost:5173",
+# ]
 
 
 LANGUAGE_CODE = "en-us"
