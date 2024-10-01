@@ -13,6 +13,10 @@ load_dotenv(env_path)
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
+
+DEBUG = True
+
+
 DEFAULT_APP = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -98,10 +102,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ALLOW_ALL_ORIGIN = True
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost",
-    "http://127.0.0.1",
-]
+# CORS_ORIGIN_WHITELIST = [
+#     "http://localhost",
+#     "http://127.0.0.1",
+# ]
 
 
 LANGUAGE_CODE = "en-us"
