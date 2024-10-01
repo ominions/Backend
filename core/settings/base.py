@@ -12,7 +12,6 @@ load_dotenv(env_path)
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = True
 
 DEFAULT_APP = [
     "django.contrib.admin",
@@ -38,7 +37,9 @@ INSTALLED_APPS = DEFAULT_APP + LOCAL_APPS + THIRD_PARTY_APPS
 
 CSRF_TRUSTED_ORIGINS = [
     "https://web-production-22dca.up.railway.app",
-    "https://dev.giriamrit.com.np"
+    "https://dev.giriamrit.com.np",
+    "http://localhost",
+    "http://127.0.0.1"
 ]
 
 
