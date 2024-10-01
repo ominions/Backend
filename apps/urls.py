@@ -2,10 +2,11 @@ from django.urls import path, include
 
 from rest_framework import routers
 
-from .views import ImageCreateAPIView
+from .views import ImageCreateAPIView, ImageGETAPI
 
 router = routers.DefaultRouter()
-router.register(r"images", ImageCreateAPIView, basename="images")
+router.register(r"images", ImageGETAPI, basename="images")
+router.register(r"upload", ImageCreateAPIView, basename="upload")
 
 urlpatterns = [
     path("api/", include(router.urls)),

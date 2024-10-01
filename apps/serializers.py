@@ -31,3 +31,9 @@ class ImageSerializers(serializers.ModelSerializer):
             return serializers.ValidationError(
                 "Either 'image' or 'image_url' must be provided."
             )
+
+
+class ImageGETSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = ImageModel
+        fields = "__all__"

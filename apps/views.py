@@ -3,15 +3,17 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.parsers import FormParser, MultiPartParser
 
 from .models import ImageModel
-from .serializers import ImageSerializers
+from .serializers import ImageSerializers, ImageGETSerializers
 
 
 class ImageCreateAPIView(viewsets.ModelViewSet):
     queryset = ImageModel.objects.all()
     serializer_class = ImageSerializers
-    http_method_names = ["get", "post", "options"]
+    parser_classes = [MultiPartParser, FormParser]
+    http_method_names = ["post", "options"]
 
     def create(self, request, *args, **kwargs):
         serializer = ImageSerializers(data=request.data)
@@ -25,3 +27,10 @@ class ImageCreateAPIView(viewsets.ModelViewSet):
         images = ImageModel.objects.all()
         serializer = ImageSerializers(images, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+class ImageGETAPI(viewsets.ModelViewSet):
+    queryset = ImageModel.objects.all()
+    serializer_class = ImageGETSerializers
+    parser_classes = [MultiPartParser, FormParser]
+    http_method_names = ["get"]
+
