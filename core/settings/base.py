@@ -14,8 +14,6 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 
-DEBUG = True
-
 
 DEFAULT_APP = [
     "django.contrib.admin",
