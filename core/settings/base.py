@@ -12,9 +12,6 @@ load_dotenv(env_path)
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-
-
-
 DEFAULT_APP = [
     "django.contrib.admin",
     "django.contrib.auth",
