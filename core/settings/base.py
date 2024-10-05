@@ -1,6 +1,5 @@
-from pathlib import Path
-
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -35,16 +34,17 @@ INSTALLED_APPS = DEFAULT_APP + LOCAL_APPS + THIRD_PARTY_APPS
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://web-production-22dca.up.railway.app",
+    # "https://web-production-22dca.up.railway.app",
+    "https://backend-df1u.onrender.com",
     "https://dev.giriamrit.com.np",
     "http://localhost",
-    "http://127.0.0.1"
+    "http://127.0.0.1",
 ]
 
 
 ALLOWED_HOSTS = [
-    'dev.giriamrit.com.np',
-    '127.0.0.1',
+    "backend-df1u.onrender.com" "dev.giriamrit.com.np",
+    "127.0.0.1",
 ]
 
 

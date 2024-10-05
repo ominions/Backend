@@ -21,5 +21,5 @@ FIREBASE_CONFIG = {
     "messagingSenderId": os.environ.get("FIREBASE_MESSAGING_SENDER_ID"),
     "appId": os.environ.get("FIREBASE_APP_ID"),
     "measurementId": os.environ.get("FIREBASE_MEASUREMENT_ID"),
-    "databaseURL": os.environ.get("FIREBASE_DATABASE_URL")
+    "databaseURL": os.environ.get("FIREBASE_DATABASE_URL"),
 }
