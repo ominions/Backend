@@ -43,7 +43,8 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 ALLOWED_HOSTS = [
-    "backend-df1u.onrender.com" "dev.giriamrit.com.np",
+    "backend-df1u.onrender.com",
+    "dev.giriamrit.com.np",
     "127.0.0.1",
 ]
 
