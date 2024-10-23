@@ -11,6 +11,6 @@ urlpatterns = [
     path("api/", include(router.urls)),
     path("api/upload/", CreateView.as_view(), name="image_upload"),
     path("api/cnn/", JSONUploadView.as_view(), name="upload_json"),
-    path('api/cnn/jsondata/', JSONRetriveView.as_view(), name='get-all-json'),   # URL to get all JSON data
-    path('api/cnn/jsondata/<int:id>/', JSONRetriveView.as_view(), name='get-json-by-id'),  # URL to get JSON data by ID
+    path('api/cnn/jsondata/', JSONRetriveView.as_view(), name='get-all-json'),
+    path('api/cnn/jsondata/<int:id>/', JSONRetriveView.as_view(), name='get-json-by-id'),
 ]
