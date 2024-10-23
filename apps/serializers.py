@@ -3,7 +3,7 @@ import pyrebase
 from django.conf import settings
 from rest_framework import serializers
 
-from .models import ImageModel
+from .models import ImageModel, JSONData
 
 
 class ImageGETSerializers(serializers.ModelSerializer):
@@ -43,3 +43,9 @@ class ImageUploadSerializers(serializers.ModelSerializer):
             ImageModel.objects.create(image_url=image_url)
 
         return {"uploaded_images": image_urls}
+
+
+class JSONSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JSONData
+        fields = ['id', 'data']
