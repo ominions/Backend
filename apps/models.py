@@ -8,3 +8,9 @@ class ImageModel(models.Model):
 
     def __str__(self):
         return f"Image {self.id}"
+
+class JSONData(models.Model):
+    data = models.JSONField()
+
+    def __str__(self):
+        return f"JSON Data Id: {self.id}"
