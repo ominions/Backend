@@ -14,3 +14,10 @@ class JSONData(models.Model):
 
     def __str__(self):
         return f"JSON Data Id: {self.id}"
+
+
+class PlyData(models.Model):
+    ply_file = models.FileField(upload_to="ply_files/")
+
+    def __str__(self):
+        return self.id
