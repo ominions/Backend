@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import ImageModel, JSONData, PlyData
-from .serializers import ImageGETSerializers, ImageUploadSerializers, JSONSerializer, PLYDataSerializer
+from .serializers import ImageGETSerializers, ImageUploadSerializers, JSONSerializer, PLYDataSerializer, PLYViewSerializer
 
 
 class ImageGETAPI(viewsets.ModelViewSet):
@@ -53,6 +53,6 @@ class PLYUploadView(APIView):
 
 class PlyGetAPI(viewsets.ModelViewSet):
     queryset = PlyData.objects.all()
-    serializer_class = PLYDataSerializer
+    serializer_class = PLYViewSerializer
     parser_classes = [MultiPartParser, FormParser]
     http_method_names = ["get"]
