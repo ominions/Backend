@@ -50,6 +50,11 @@ class JSONSerializer(serializers.ModelSerializer):
         model = JSONData
         fields = ['id', 'data']
 
+class PLYViewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlyData
+        fields = "__all__"
+
 class PLYDataSerializer(serializers.ModelSerializer):
     uploaded_files = serializers.ListField(
         child=serializers.FileField(allow_empty_file=False, use_url=False),
@@ -58,7 +63,7 @@ class PLYDataSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = PlyData
-        fields = ['uploaded_files']
+        fields = ["uploaded_files"]
 
     def create(self, validated_data):
         uploaded_files = validated_data.pop("uploaded_files")
