@@ -18,6 +18,7 @@ class JSONData(models.Model):
 
 class PlyData(models.Model):
     ply_file = models.FileField(upload_to="ply_files/")
+    ply_file_url = models.URLField(blank=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -55,6 +55,7 @@ class PLYViewSerializer(serializers.ModelSerializer):
         model = PlyData
         fields = "__all__"
 
+
 class PLYDataSerializer(serializers.ModelSerializer):
     uploaded_files = serializers.ListField(
         child=serializers.FileField(allow_empty_file=False, use_url=False),
@@ -79,12 +80,12 @@ class PLYDataSerializer(serializers.ModelSerializer):
             path_on_cloud = f"ply_files/{file.name}"
             storage.child(path_on_cloud).put(file)
             
-            # Get the URL of the uploaded file
+            # # Get the URL of the uploaded file
             file_url = storage.child(path_on_cloud).get_url(None)
             file_urls.append(file_url)
 
             # Save the PLYData instance with the file URL
-            PLYData.objects.create(name=file.name, ply_file_url=file_url)
+            PlyData.objects.create(ply_file_url=file_url)
 
         # Return URLs of all uploaded files
         return {"uploaded_files": file_urls}
