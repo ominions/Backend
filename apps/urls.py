@@ -1,11 +1,11 @@
 from django.urls import include, path
 from rest_framework import routers
 
-from .views import CreateView, ImageGETAPI, JSONUploadView, JSONRetriveView,PLYUploadView, PlyGetAPI
+from .views import CreateView, ImageGETAPI, JSONUploadView, JSONRetriveView,PLYUploadView, PLYListView
 
 router = routers.DefaultRouter()
 router.register(r"images", ImageGETAPI, basename="images")
-router.register(r"ply", PlyGetAPI, basename="ply")
+# router.register(r"ply", PlyGetAPI, basename="ply")
 
 urlpatterns = [
     path("api/", include(router.urls)),
@@ -14,4 +14,5 @@ urlpatterns = [
     path('api/cnn/jsondata/', JSONRetriveView.as_view(), name='get-all-json'),
     path('api/cnn/jsondata/<int:id>/', JSONRetriveView.as_view(), name='get-json-by-id'),
     path('api/ply/upload', PLYUploadView.as_view(), name='ply-file-upload'),
+    path('api/ply/',PLYListView.as_view(),name='ply-list-upload')
 ]

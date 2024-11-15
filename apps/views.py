@@ -8,6 +8,8 @@ from rest_framework.views import APIView
 from .models import ImageModel, JSONData, PlyData
 from .serializers import ImageGETSerializers, ImageUploadSerializers, JSONSerializer, PLYDataSerializer, PLYViewSerializer
 
+import pyrebase
+from django.conf import settings
 
 class ImageGETAPI(viewsets.ModelViewSet):
     queryset = ImageModel.objects.all()
@@ -51,8 +53,13 @@ class PLYUploadView(APIView):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class PlyGetAPI(viewsets.ModelViewSet):
-    queryset = PlyData.objects.all()
-    serializer_class = PLYViewSerializer
-    parser_classes = [MultiPartParser, FormParser]
-    http_method_names = ["get"]
+class PLYListView(APIView):
+    def get(self, request, *args, **kwargs):
+        # Fetch all PlyData objects from the database
+        ply_data = PlyData.objects.all()
+
+        # Serialize the data
+        serializer = PLYViewSerializer(ply_data, many=True)
+
+        # Return the serialized data as a response
+        return Response(serializer.data, status=status.HTTP_200_OK)
