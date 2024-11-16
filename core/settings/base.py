@@ -38,7 +38,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://dev.giriamrit.com.np",
     "http://localhost",
     "http://127.0.0.1",
-    "https://gui.giriamrit.com.np",
 ]
 
 
@@ -98,10 +97,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ALLOW_ALL_ORIGIN = True
-# CORS_ORIGIN_WHITELIST = [
-#     "http://localhost",
-#     "http://127.0.0.1",
-# ]
+CORS_ORIGIN_WHITELIST = [
+    "https://gui.giriamrit.com.np",
+    "http://localhost",
+    "http://127.0.0.1",
+]
 
 
 LANGUAGE_CODE = "en-us"
