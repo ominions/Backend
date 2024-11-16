@@ -38,6 +38,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://dev.giriamrit.com.np",
     "http://localhost",
     "http://127.0.0.1",
+    "https://gui.giriamrit.com.np",
 ]
 
 
