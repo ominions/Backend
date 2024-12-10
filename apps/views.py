@@ -1,9 +1,13 @@
 from django.shortcuts import render
+# from django.http import StreamingHttpResponse
 from rest_framework import status, viewsets
 from rest_framework.generics import CreateAPIView
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.exceptions import ValidationError
+from django.utils.dateparse import parse_date
+
 
 from .models import ImageModel, JSONData, PlyData
 from .serializers import ImageGETSerializers, ImageUploadSerializers, JSONSerializer, PLYDataSerializer, PLYViewSerializer
@@ -16,6 +20,20 @@ class ImageGETAPI(viewsets.ModelViewSet):
     serializer_class = ImageGETSerializers
     parser_classes = [MultiPartParser, FormParser]
     http_method_names = ["get"]
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        date = self.request.query_params.get("date")
+
+        if date:
+            parsed_date = parse_date(date)
+            if not parsed_date:
+                raise ValidationError({"date": "Invalid date format. Use 'YYYY-MM-DD'."})
+
+            # Filter by uploaded_at date
+            queryset = queryset.filter(uploaded_at__date=parsed_date)
+
+        return queryset
 
 
 class CreateView(CreateAPIView):
@@ -53,10 +71,16 @@ class PLYUploadView(APIView):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 class PLYListView(APIView):
     def get(self, request, *args, **kwargs):
+        query_params = request.query_params
         # Fetch all PlyData objects from the database
         ply_data = PlyData.objects.all()
+
+        if 'date' in query_params:
+            date = parse_date(query_params['date'])
+            ply_data = ply_data.filter(uploaded_at__date=date)
 
         # Serialize the data
         serializer = PLYViewSerializer(ply_data, many=True)
