@@ -80,7 +80,7 @@ class ImageUploadSerializers(serializers.ModelSerializer):
         uploaded_url = 'http://127.0.0.1:8000/api/ply/upload/'
 
         with open(file_path, 'rb') as ply_file:
-            files = {'uploaded_files': (f'points{ImageModel.objects.order_by('-id').values_list('id', flat=True).first()}.ply', ply_file, 'application/octet-stream')}
+            files = {'uploaded_files': (f"points{ImageModel.objects.order_by('-id').values_list('id', flat=True).first()}.ply", ply_file, 'application/octet-stream')}
             response = requests.post(uploaded_url, files=files)
 
         print(response.status_code)  # 200 for success, or error details
