@@ -77,7 +77,7 @@ class ImageUploadSerializers(serializers.ModelSerializer):
         generate_point_cloud(download_path, output_path)
 
         file_path = project_folder / "apps" / "ply" / "point_cloud.ply"
-        uploaded_url = 'http://127.0.0.1:8000/api/ply/upload/'
+        uploaded_url = 'https://dev.giriamrit.com.np/api/ply/upload/'
 
         with open(file_path, 'rb') as ply_file:
             files = {'uploaded_files': (f"points{ImageModel.objects.order_by('-id').values_list('id', flat=True).first()}.ply", ply_file, 'application/octet-stream')}
