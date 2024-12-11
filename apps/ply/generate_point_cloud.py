@@ -1,7 +1,7 @@
 import numpy as np
 import pycolmap 
 from pathlib import Path
-from . import extract_from_read_write_model
+from .extract_from_read_write_model import create_ply_file
 
 def generate_point_cloud(image_dir, output_path):  
     # Create necessary directories
@@ -26,4 +26,4 @@ def generate_point_cloud(image_dir, output_path):
     maps[0].write(output_path)
     print(f"Sparse reconstruction completed. Results saved to: {output_path}")
     output_path = output_path / '0'
-    extract_from_read_write_model.create_ply_file(output_path)
+    create_ply_file(output_path)

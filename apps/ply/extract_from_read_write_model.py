@@ -234,7 +234,7 @@ def read_model(path, ext=""):
 def create_ply_file(path):
     _, _, points3D = read_model(path, ext='.bin')
 # Create PLY file
-    with open('./apps/ply/point_cloud.ply', 'w') as f:
+    with open('/tmp/point_cloud_outputs/point_cloud.ply', 'w') as f:
         f.write('ply\n')
         f.write('format ascii 1.0\n')
         f.write(f'element vertex {len(points3D)}\n')
