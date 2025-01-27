@@ -117,8 +117,10 @@ cython_debug/
 
 
 #Docker
-docker-compose.yaml
+docker-compose.yml
 
+migrations/
+media/
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
