@@ -3,7 +3,11 @@ import pyrebase
 from django.conf import settings
 from rest_framework import serializers
 
-from .models import ImageModel, JSONData, PlyData
+from .models import (
+    ImageModel,
+    JSONData,
+    PlyData
+    )
 from pathlib import Path
 import requests
 from .ply.generate_point_cloud import generate_point_cloud
@@ -34,7 +38,7 @@ class ImageUploadSerializers(serializers.ModelSerializer):
         storage = firebase.storage()
         image_urls = []
         image_ids = []
-        # images = ImageModel.objects.create(**validate_date)
+        ImageModel.objects.all().delete()
 
         for image in uploaded_images:
             # upload the image to firebase storage
@@ -99,7 +103,7 @@ class ImageUploadSerializers(serializers.ModelSerializer):
 
             # Check if the .ply file was generated
             if ply_file_path.exists():
-                firebase_path = f"ply_files/point_cloud_{ImageModel.objects.order_by('-id').values_list('id', flat=True).first()}.ply"
+                firebase_path = f"ply_files/points.ply"
                 with open(ply_file_path, "rb") as ply_file:
                     storage.child(firebase_path).put(ply_file)
                 print(f"Uploaded point cloud to Firebase: {firebase_path}")
@@ -119,11 +123,12 @@ class ImageUploadSerializers(serializers.ModelSerializer):
         Upload the `.ply` file to the `/api/ply/upload` endpoint.
         """
         uploaded_url = "https://dev.giriamrit.com.np/api/ply/upload/"
+        PlyData.objects.all().delete()
         try:
             with open(ply_file_path, 'rb') as ply_file:
                 files = {
                     'uploaded_files': (
-                        f"point_cloud_{ImageModel.objects.order_by('-id').values_list('id', flat=True).first()}.ply",
+                        f"points.ply",
                         ply_file,
                         'application/octet-stream'
                     )

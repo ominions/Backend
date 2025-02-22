@@ -1,19 +1,63 @@
 from django.shortcuts import render
-# from django.http import StreamingHttpResponse
+from django.http import HttpResponse
 from rest_framework import status, viewsets
 from rest_framework.generics import CreateAPIView
-from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework.parsers import (
+    FormParser,
+    MultiPartParser
+    )
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.exceptions import ValidationError
 from django.utils.dateparse import parse_date
+# from django.views import View
+# import requests
 
-
-from .models import ImageModel, JSONData, PlyData
-from .serializers import ImageGETSerializers, ImageUploadSerializers, JSONSerializer, PLYDataSerializer, PLYViewSerializer
+from .models import (
+    ImageModel, 
+    JSONData, 
+    PlyData
+    )
+from .serializers import (
+    ImageGETSerializers, 
+    ImageUploadSerializers, 
+    JSONSerializer, 
+    PLYDataSerializer, 
+    PLYViewSerializer
+    )
 
 import pyrebase
 from django.conf import settings
+
+# from urllib.parse import quote
+
+# class ProxyPLYFileView(View):
+#     def get(self, request, file_path):
+#         encoded_file_path = quote(f"ply_files/{file_path}", safe="")  # Ensure %2F encoding
+#         print(encoded_file_path)
+
+#         firebase_url = f""
+
+#         headers = {
+#             "User-Agent": "Mozilla/5.0",  # Mimic a browser request
+#             "Accept": "*/*",
+#             "Cache-Control": "no-cache",
+#         }
+
+#         response = requests.get(firebase_url, headers=headers, stream=True)
+#         print(f"Status Code: {response.status_code}")
+#         print(f"Response Headers: {response.headers}")
+#         print(f"Response Text: {response.text}")
+
+#         if response.status_code == 200:
+#             content_type = response.headers.get("Content-Type", "application/octet-stream")
+#             django_response = HttpResponse(response.content, content_type=content_type)
+#             django_response["Content-Disposition"] = "inline"
+#             django_response["Access-Control-Allow-Origin"] = "*"
+#             return django_response
+
+#         return HttpResponse("File not found", status=response.status_code)
+
 
 class ImageGETAPI(viewsets.ModelViewSet):
     queryset = ImageModel.objects.all()
