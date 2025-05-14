@@ -38,7 +38,7 @@ class ImageUploadSerializers(serializers.ModelSerializer):
         storage = firebase.storage()
         image_urls = []
         image_ids = []
-        ImageModel.objects.all().delete()
+        # ImageModel.objects.all().delete()
 
         for image in uploaded_images:
             # upload the image to firebase storage
