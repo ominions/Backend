@@ -34,16 +34,12 @@ INSTALLED_APPS = DEFAULT_APP + LOCAL_APPS + THIRD_PARTY_APPS
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://backend-df1u.onrender.com",
-    "https://dev.giriamrit.com.np",
-    "http://localhost",
-    "http://127.0.0.1",
+    "<trusted_urls>",
 ]
 
 
 ALLOWED_HOSTS = [
-    "backend-df1u.onrender.com",
-    "dev.giriamrit.com.np",
+    "<trusted_urls>",
     "127.0.0.1",
 ]
 
@@ -98,7 +94,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 CORS_ALLOW_ALL_ORIGIN = True
 CORS_ORIGIN_WHITELIST = [
-    "https://gui.giriamrit.com.np",
     "http://localhost",
     "http://127.0.0.1",
 ]

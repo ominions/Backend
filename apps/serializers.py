@@ -122,7 +122,7 @@ class ImageUploadSerializers(serializers.ModelSerializer):
         """
         Upload the `.ply` file to the `/api/ply/upload` endpoint.
         """
-        uploaded_url = "https://dev.giriamrit.com.np/api/ply/upload/"
+        uploaded_url = "<url_api>"
         PlyData.objects.all().delete()
         try:
             with open(ply_file_path, 'rb') as ply_file:
